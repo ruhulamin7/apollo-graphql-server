@@ -70,11 +70,13 @@ const resolvers = {
       return updatedUser;
     },
 
-    addPost: (root, { input: { title, description } }) => {
+    addPost: (root, { input: { title, description, user } }) => {
+      console.log(user);
       const post = {
         id: posts.length + 1,
         title,
         description,
+        user,
       };
       posts.push(post);
       return post;

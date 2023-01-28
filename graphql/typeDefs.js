@@ -47,7 +47,8 @@ const typeDefs = `#graphql
 
     input PostInput {
         title: String!
-        description: String         
+        description: String  
+        user: ID!      
     }
 
     type Query {
