@@ -93,6 +93,17 @@ const resolvers = {
       });
       return updatedPost;
     },
+
+    deleteUser: (root, { id }) => {
+      const index = users.findIndex((user) => user.id == id);
+
+      if (index >= 0) {
+        users.splice(index, 1);
+        return true;
+      } else {
+        return false;
+      }
+    },
   },
 };
 
