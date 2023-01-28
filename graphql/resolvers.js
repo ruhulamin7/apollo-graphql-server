@@ -104,6 +104,16 @@ const resolvers = {
         return false;
       }
     },
+
+    deletePost: (root, { id }) => {
+      const index = posts.findIndex((post) => post.id == id);
+      if (index >= 0) {
+        posts.splice(index, 1);
+        return true;
+      } else {
+        return false;
+      }
+    },
   },
 };
 

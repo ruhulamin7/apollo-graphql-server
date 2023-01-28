@@ -70,6 +70,7 @@ const typeDefs = `#graphql
         addPost(input:PostInput):Post
         updatePost(id:ID!, input:UpdatePostInput):Post
         deleteUser(id:ID!):Boolean!
+        deletePost(id:ID!):Boolean!
 
     }
 `;
