@@ -14,8 +14,6 @@ const typeDefs = `#graphql
         isMarried: Boolean
         posts:[Post!]
     }
-
-
   
     type Post {
         id: ID!
@@ -35,6 +33,8 @@ const typeDefs = `#graphql
             isMarried: Boolean      
     }
 
+   
+
     input UpdateUserInput {
             id: ID
             firstName: String
@@ -45,6 +45,10 @@ const typeDefs = `#graphql
             isMarried: Boolean      
     }
 
+    input PostInput {
+        title: String!
+        description: String         
+    }
 
     type Query {
         users: [User!]!
@@ -55,10 +59,9 @@ const typeDefs = `#graphql
 
     type Mutation {
         addUser(input:UserInput):User
-        updateUser(input:UpdateUserInput):User
+        updateUser(id:ID! input:UpdateUserInput):User
+        addPost(input:PostInput):Post
     }
-
-  
 `;
 
 module.exports = typeDefs;

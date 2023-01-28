@@ -15,15 +15,6 @@ const resolvers = {
     },
   },
 
-  // User: {
-  //   posts(user) {
-  //     return posts.filter((post) => {
-  //       if (user.posts.includes(post.id)) return true;
-  //       return false;
-  //     });
-  //   },
-  // },
-
   Query: {
     users: (root, args) => {
       return users;
@@ -59,33 +50,35 @@ const resolvers = {
       users.push(user);
       return user;
     },
+
     updateUser: (
       root,
-      { id, input: { firstName, lastName, phone, gender, email, isMarred } }
+      { id, input: { firstName, lastName, phone, gender, email, isMarried } }
     ) => {
-      let updateUser = null;
+      let updatedUser = null;
       users.forEach((user) => {
         if (user.id == id) {
           if (firstName) user.firstName = firstName;
           if (lastName) user.lastName = lastName;
           if (gender) user.gender = gender;
           if (email) user.email = email;
-          if (isMarred) user.isMarred = isMarred;
+          if (isMarried) user.isMarried = isMarried;
           if (phone) user.phone = phone;
+          updatedUser = user;
         }
-        return updateUser;
       });
+      return updatedUser;
     },
 
-    // addPost: (root, { input: { title, description } }) => {
-    //   const post = {
-    //     id: posts.length + 1,
-    //     title,
-    //     description,
-    //   };
-    //   posts.push(post);
-    //   return post;
-    // },
+    addPost: (root, { input: { title, description } }) => {
+      const post = {
+        id: posts.length + 1,
+        title,
+        description,
+      };
+      posts.push(post);
+      return post;
+    },
   },
 };
 
