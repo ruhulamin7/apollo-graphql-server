@@ -1,4 +1,4 @@
-const { users } = require('../data');
+const { users, posts } = require('../data');
 
 const resolvers = {
   Query: {
@@ -8,6 +8,9 @@ const resolvers = {
     user: (root, { id }) => {
       const user = users.find((user) => user.id == id);
       return user;
+    },
+    post: (root, args) => {
+      return posts;
     },
   },
 

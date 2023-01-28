@@ -10,6 +10,12 @@ const typeDefs = `#graphql
         #posts:[post!]
     }
   
+    type Post {
+        id: ID!
+        title: String!
+        description: String
+        user: User!   
+    }
 
     enum GenderEnum {
         Female
@@ -30,6 +36,7 @@ const typeDefs = `#graphql
     type Query {
         users: [User!]!
         user(id:ID!):User!
+        posts:[post!]!
     }
 
     type Mutation {
