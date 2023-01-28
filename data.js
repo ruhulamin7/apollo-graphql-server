@@ -3,7 +3,7 @@ const users = [
     id: 1,
     firstName: 'Joy',
     lastName: 'Sarkar',
-    gender: 'male',
+    gender: 'Male',
     phone: '01792384909',
     email: 'joy@sarkar.com',
     isMarried: false,
@@ -15,7 +15,7 @@ const users = [
     id: 2,
     firstName: 'Ruhul',
     lastName: 'Amin',
-    gender: 'male',
+    gender: 'Male',
     phone: '01739713734',
     email: 'ruhul@amin.com',
     isMarried: true,
@@ -41,7 +41,7 @@ const posts = [
   {
     id: 3,
     title: 'PHP',
-    description: 'PHP is a programming language',
+    description: 'PHP is a programming language - by Ruhul',
     user: 2,
   },
 ];
