@@ -71,7 +71,6 @@ const resolvers = {
     },
 
     addPost: (root, { input: { title, description, user } }) => {
-      console.log(user);
       const post = {
         id: posts.length + 1,
         title,
@@ -80,6 +79,19 @@ const resolvers = {
       };
       posts.push(post);
       return post;
+    },
+
+    updatePost: (root, { id, input: { title, description, user } }) => {
+      let updatedPost = null;
+      posts.forEach((post) => {
+        if (post.id == id) {
+          if (title) post.title = title;
+          if (description) post.description = description;
+          if (user) post.user = user;
+          updatedPost = post;
+        }
+      });
+      return updatedPost;
     },
   },
 };

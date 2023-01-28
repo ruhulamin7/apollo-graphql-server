@@ -51,6 +51,12 @@ const typeDefs = `#graphql
         user: ID!      
     }
 
+    input UpdatePostInput {
+        title: String
+        description: String
+        user: ID!  
+    }
+
     type Query {
         users: [User!]!
         user(id:ID!):User!
@@ -62,6 +68,7 @@ const typeDefs = `#graphql
         addUser(input:UserInput):User
         updateUser(id:ID! input:UpdateUserInput):User
         addPost(input:PostInput):Post
+        updatePost(id:ID!, input:UpdatePostInput):Post
     }
 `;
 
