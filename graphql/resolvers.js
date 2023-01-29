@@ -1,4 +1,5 @@
 const { users, posts } = require('../data');
+const { DateType, EmailType, PasswordType } = require('./customTypes');
 
 const resolvers = {
   Post: {
@@ -35,7 +36,17 @@ const resolvers = {
   Mutation: {
     addUser: (
       root,
-      { input: { firstName, lastName, phone, gender, email, isMarred } }
+      {
+        input: {
+          firstName,
+          lastName,
+          phone,
+          gender,
+          email,
+          isMarred,
+          password,
+        },
+      }
     ) => {
       const user = {
         id: users.length + 1,
@@ -46,6 +57,8 @@ const resolvers = {
         email,
         isMarred,
         posts: [],
+        createdAt: new Date(),
+        password,
       };
       users.push(user);
       return user;
@@ -53,7 +66,18 @@ const resolvers = {
 
     updateUser: (
       root,
-      { id, input: { firstName, lastName, phone, gender, email, isMarried } }
+      {
+        id,
+        input: {
+          firstName,
+          lastName,
+          phone,
+          gender,
+          email,
+          isMarried,
+          password,
+        },
+      }
     ) => {
       let updatedUser = null;
       users.forEach((user) => {
@@ -64,6 +88,7 @@ const resolvers = {
           if (email) user.email = email;
           if (isMarried) user.isMarried = isMarried;
           if (phone) user.phone = phone;
+          if (password) user.password = password;
           updatedUser = user;
         }
       });
@@ -115,6 +140,10 @@ const resolvers = {
       }
     },
   },
+
+  EmailType: EmailType,
+  DateType: DateType,
+  PasswordType: PasswordType,
 };
 
 module.exports = resolvers;
